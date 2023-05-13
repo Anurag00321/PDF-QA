@@ -11,7 +11,7 @@ const model = new OpenAI({
   temperature: 0.9,
   openAIApiKey: process.env.OPENAI_API_KEY,
 });
-const loader = new PDFLoader("DBMS HA.pdf");
+const loader = new PDFLoader("INSERT_PDF");
 const text = await loader.load()
 
  const splitter = new RecursiveCharacterTextSplitter({
@@ -32,6 +32,6 @@ const chain = ConversationalRetrievalQAChain.fromLLM(
   vectorStore.asRetriever()
 );
 /* Ask it a question */
-const question = "Explain PostgreSQL?";
+const question = "ASK_QUESTION";
 const res = await chain.call({ question, chat_history: [] });
 console.log(res);
